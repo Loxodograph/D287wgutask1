@@ -26,7 +26,7 @@ public class StudentRoster {
         for (Student student : roster) {
             System.out.println(student.getStudentId() + "\tFirst Name: " +
                     student.getFirstName() + "\tLast Name: " + student.getLastName() +
-                    "\tAge: " + student.getAge() + "\tGrades: " + student.getGrades() + ".");
+                    "\tAge: " + student.getAge() + "\tGrades: " + Arrays.toString(student.getGrades()) + ".");
         }
     }
 
