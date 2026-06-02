@@ -3,7 +3,7 @@ void main() {
     String[] students = {"1,John,Smith,John1989@gmail.com,20,88,79,59","2,Suzan,Erickson,Erickson_1990@gmailcom,19,91,72,85",
  "3,Jack,Napoli,The_lawyer99yahoo.com,19,85,84,87",
  "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
- "5,Nick,Paldino],fake@fake.com,36,51,90,83"};
+ "5,Nick,Paldino,fake@fake.com,36,51,90,83"};
 
     StudentRoster studentRoster = new StudentRoster();
 
@@ -16,7 +16,10 @@ void main() {
     studentRoster.print_all();
     studentRoster.print_invalid_emails();
 
-    for (int i = 0; i < students.length; i++) {
+    for (Student student : studentRoster.roster) {
+        studentRoster.print_average_grade(student.getStudentId());
 
     }
+    studentRoster.remove("3");
+    studentRoster.remove("3");
 }

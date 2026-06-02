@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -17,9 +18,9 @@ public class StudentRoster {
     }
 
     public void remove(String studentID) {
-        if (roster.removeIf(student -> student.getStudentId() == studentID) == false) {
+        if (!roster.removeIf(student -> student.getStudentId().equals(studentID))) {
             System.out.println("No student found with that ID.");
-        };
+        }
     }
 
     public void print_all() {
@@ -35,12 +36,14 @@ public class StudentRoster {
             return candidate.getStudentId() == studentID;
         }).findFirst().orElse(null);
 
-        Double average = (double) (Arrays.stream(student.getGrades()).reduce(0, (subtotal, element) -> subtotal + element) / student.getGrades().length);
-        System.out.println(student.getStudentId() + "\t" + average);
+        Double average = (Arrays.stream(student.getGrades()).reduce(0, (subtotal, element) -> subtotal + element) / (double) student.getGrades().length);
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        System.out.println(student.getFirstName() + " " + student.getLastName() + " (" +
+                student.getStudentId() + "):\t" + decimalFormat.format(average));
     }
 
     public void print_invalid_emails() {
-        String regex = "([A-Z])\\w+[^\\s].+[^\\s]@{1}[^\\s].+[^\\s]\\.+[^\\s].+[^\\s]";
+        String regex = "[^\\s].+[^\\s]@{1}[^\\s].+[^\\s]\\.+[^\\s].+[^\\s]";
 
         for (Student student : roster) {
             if (!Pattern.matches(regex, student.getEmail())) {
