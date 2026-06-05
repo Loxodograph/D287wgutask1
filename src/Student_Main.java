@@ -7,19 +7,40 @@ void main() {
 
     StudentRoster studentRoster = new StudentRoster();
 
+    // loop through students
     for (int i = 0; i < students.length; i++) {
+        // split the accessed student element into smaller parts
         String[] studentInfo = students[i].split(",");
-        studentRoster.add(studentInfo[0], studentInfo[1], studentInfo[2], studentInfo[3],
-                Integer.parseInt(studentInfo[4]), Integer.parseInt(studentInfo[5]), Integer.parseInt(studentInfo[6]), Integer.parseInt(studentInfo[7]));
+
+        String studentId = studentInfo[0];
+        String firstName = studentInfo[1];
+        String lastName = studentInfo[2];
+        String email = studentInfo[3];
+        int age = Integer.parseInt(studentInfo[4]);
+        int grade1 = Integer.parseInt(studentInfo[5]);
+        int grade2 = Integer.parseInt(studentInfo[6]);
+        int grade3 = Integer.parseInt(studentInfo[7]);
+
+        studentRoster.add(studentId, firstName, lastName, email, age, grade1, grade2, grade3);
     }
 
     studentRoster.print_all();
     studentRoster.print_invalid_emails();
 
-    for (Student student : studentRoster.roster) {
-        studentRoster.print_average_grade(student.getStudentId());
+    // iterate through local array of student data
+    for (int i = 0; i < students.length; i++) {
+        // split the accessed student element into smaller parts
+        String[] studentInfo = students[i].split(",");
 
+        // extract ID
+        String studentId = studentInfo[0];
+
+        studentRoster.print_average_grade(studentId);
     }
+
+    // remove Jack Napoli
     studentRoster.remove("3");
+
+    // try to remove again, student not found.
     studentRoster.remove("3");
 }

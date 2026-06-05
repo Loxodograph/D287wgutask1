@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Student {
     private String studentId;
     private String firstName;
@@ -69,6 +71,6 @@ public class Student {
         System.out.println(getFirstName() + " " + getLastName());
         System.out.println(getEmail());
         System.out.println(getAge());
-        System.out.println(getGrades());
+        System.out.println(Arrays.toString(getGrades()));
     }
 }
