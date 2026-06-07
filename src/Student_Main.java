@@ -8,9 +8,9 @@ void main() {
     StudentRoster studentRoster = new StudentRoster();
 
     // loop through students
-    for (int i = 0; i < students.length; i++) {
+    for (String student : students) {
         // split the accessed student element into smaller parts
-        String[] studentInfo = students[i].split(",");
+        String[] studentInfo = student.split(",");
 
         String studentId = studentInfo[0];
         String firstName = studentInfo[1];
@@ -27,10 +27,10 @@ void main() {
     studentRoster.print_all();
     studentRoster.print_invalid_emails();
 
-    // iterate through local array of student data
-    for (int i = 0; i < students.length; i++) {
+    // iterate through the local array of student data
+    for (String student : students) {
         // split the accessed student element into smaller parts
-        String[] studentInfo = students[i].split(",");
+        String[] studentInfo = student.split(",");
 
         // extract ID
         String studentId = studentInfo[0];
@@ -41,6 +41,6 @@ void main() {
     // remove Jack Napoli
     studentRoster.remove("3");
 
-    // try to remove again, student not found.
+    // try to remove again, the student not found.
     studentRoster.remove("3");
 }

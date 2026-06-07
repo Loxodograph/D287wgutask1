@@ -4,34 +4,32 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class StudentRoster {
-    private ArrayList<Student> roster;
+    private final ArrayList<Student> roster;
 
 
     public StudentRoster() {
-        this.roster = new ArrayList<Student>();
+        this.roster = new ArrayList<>();
     }
 
     public void add(String studentId, String firstName, String lastName, String email, int age, int grade1, int grade2, int grade3) {
         // turn individual grades into array
         int[] gradeList = {grade1, grade2, grade3};
-        // create student and add to roster
+        // create student and add to the roster
         Student newStudent = new Student(studentId, firstName, lastName, email, age, gradeList);
         roster.add(newStudent);
     }
 
     public void remove(String studentID) {
-        // remove student from roster using ID code. If value is false print error
+        // remove the student from a roster using ID code. If value is false, print the error
         if (!roster.removeIf(student -> student.getStudentId().equals(studentID))) {
             System.out.println("No student found with that ID.");
         }
     }
 
     public void print_all() {
-        //iterate through students in roster and print tab separated list.
+        //iterate through students in a roster and print a tab separated list.
         for (Student student : roster) {
-            System.out.println(student.getStudentId() + "\tFirst Name: " +
-                    student.getFirstName() + "\tLast Name: " + student.getLastName() +
-                    "\tAge: " + student.getAge() + "\tGrades: " + Arrays.toString(student.getGrades()) + ".");
+            student.print();
         }
     }
 
@@ -44,7 +42,7 @@ public class StudentRoster {
                 .findFirst()
                 .orElse(null);
 
-        // if student is not found, output an error message
+        // if the student is not found, output an error message
         if (student == null) {
             System.out.println("Error: Student with ID " + studentID + " not found.");
             return;
@@ -52,7 +50,7 @@ public class StudentRoster {
 
 
         // use reduce to get the sum of the grades array. divide it by the length
-        // of the grades array to get average. cast to double
+        // of the grades array to get the average. cast to double
         Double average = (Arrays.stream(student.getGrades()).reduce(0, (subtotal, element) -> subtotal + element) / (double) student.getGrades().length);
 
         // print the information - use decimalformat to format the double to only

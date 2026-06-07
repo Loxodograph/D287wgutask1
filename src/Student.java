@@ -67,10 +67,8 @@ public class Student {
     }
 
     public void print() {
-        System.out.println(getStudentId());
-        System.out.println(getFirstName() + " " + getLastName());
-        System.out.println(getEmail());
-        System.out.println(getAge());
-        System.out.println(Arrays.toString(getGrades()));
+        System.out.println(getStudentId() + "\tFirst Name: " +
+                getFirstName() + "\tLast Name: " + getLastName() + "\tEmail: " + getEmail() +
+                "\tAge: " + getAge() + "\tGrades: " + Arrays.toString(getGrades()) + ".");
     }
 }
